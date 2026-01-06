@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detail Warisan Budaya</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fb;
+      color: #1f2937;
+    }
+    header {
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+      color: white;
+      padding: 1.5rem;
+    }
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+    img {
+      width: 100%;
+      border-radius: 20px;
+      margin: 1rem 0;
+    }
+    .badge {
+      background: #ccfbf1;
+      color: #0f766e;
+      padding: 6px 14px;
+      border-radius: 999px;
+      display: inline-block;
+      font-weight: 600;
+    }
+    a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html">← Kembali ke Peta</a>
+</header>
+
+<main>
+  <h1 id="title"></h1>
+  <div class="badge" id="category"></div>
+  <img id="image">
+
+  <h2>Deskripsi</h2>
+  <p id="description"></p>
+
+  <h2>Sejarah</h2>
+  <p id="history"></p>
+
+  <h2>Informasi Kunjungan</h2>
+  <ul>
+    <li><strong>Jam Buka:</strong> <span id="open"></span></li>
+    <li><strong>Harga Tiket:</strong> <span id="ticket"></span></li>
+  </ul>
+
+  <h2>Nilai Budaya</h2>
+  <p id="value"></p>
+
+  <h2>Potensi Pengembangan</h2>
+  <ul id="potential"></ul>
+</main>
+
+<script>
+  const data = {
+    borobudur: {
+      name: "Candi Borobudur",
+      category: "Situs Sejarah",
+      image: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Borobudur-Nothwest-view.jpg",
+      description: "Candi Buddha terbesar di dunia dan warisan budaya UNESCO.",
+      history: "Dibangun pada abad ke-8 oleh Dinasti Syailendra sebagai pusat ibadah Buddha dan pendidikan spiritual.",
+      open: "06.30 – 16.30 WIB",
+      ticket: "Rp50.000 (Domestik) | Rp350.000 (WNA)",
+      value: "Simbol kejayaan peradaban Nusantara dan toleransi budaya.",
+      potential: [
+        "Wisata edukasi global",
+        "Tur virtual berbasis teknologi",
+        "Penguatan UMKM lokal"
+      ]
+    },
+    prambanan: {
+      name: "Candi Prambanan",
+      category: "Situs Sejarah",
+      image: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Prambanan_Temple_Compounds.jpg",
+      description: "Kompleks candi Hindu terbesar di Indonesia.",
+      history: "Dibangun pada abad ke-9 sebagai persembahan untuk Trimurti.",
+      open: "06.30 – 17.00 WIB",
+      ticket: "Rp50.000 (Domestik) | Rp350.000 (WNA)",
+      value: "Warisan arsitektur Hindu yang mendunia.",
+      potential: [
+        "Festival budaya Ramayana",
+        "Storytelling digital",
+        "Wisata sejarah"
+      ]
+    }
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+  const site = data[id];
+
+  if (site) {
+    document.getElementById("title").innerText = site.name;
+    document.getElementById("category").innerText = site.category;
+    document.getElementById("image").src = site.image;
+    document.getElementById("description").innerText = site.description;
+    document.getElementById("history").innerText = site.history;
+    document.getElementById("open").innerText = site.open;
+    document.getElementById("ticket").innerText = site.ticket;
+    document.getElementById("value").innerText = site.value;
+
+    site.potential.forEach(p => {
+      const li = document.createElement("li");
+      li.innerText = p;
+      document.getElementById("potential").appendChild(li);
+    });
+  }
+</script>
+
+</body>
+</html>
