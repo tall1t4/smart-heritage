@@ -1,57 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Heritage Indonesia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+    #map { height: 100vh; }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+const heritageSites = [
   {
     id: "borobudur",
     name: "Candi Borobudur",
     category: "Situs Sejarah",
-    location: [-7.6079, 110.2038],
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Borobudur-Nothwest-view.jpg",
-    description: "Candi Buddha terbesar di dunia dan warisan UNESCO."
+    location: [-7.6079, 110.2038]
   },
   {
     id: "prambanan",
     name: "Candi Prambanan",
     category: "Situs Sejarah",
-    location: [-7.7520, 110.4918],
-    image: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Prambanan_Temple_Compounds.jpg",
-    description: "Kompleks candi Hindu terbesar di Indonesia."
+    location: [-7.7520, 110.4918]
   },
   {
     id: "rumah-gadang",
     name: "Rumah Gadang",
     category: "Arsitektur Tradisional",
-    location: [-0.7399, 100.8000],
-    image: "https://upload.wikimedia.org/wikipedia/commons/3/3e/Rumah_Gadang_Padang.jpg",
-    description: "Rumah adat Minangkabau dengan filosofi matrilineal."
+    location: [-0.7399, 100.8000]
   },
   {
     id: "tana-toraja",
     name: "Tana Toraja",
     category: "Budaya & Tradisi",
-    location: [-3.0753, 119.7426],
-    image: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Tana_Toraja.jpg",
-    description: "Wilayah adat dengan ritual pemakaman unik."
+    location: [-3.0753, 119.7426]
   },
   {
     id: "pura-besakih",
     name: "Pura Besakih",
     category: "Situs Keagamaan",
-    location: [-8.3740, 115.4506],
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Pura_Besakih.jpg",
-    description: "Pura terbesar dan tersuci di Bali."
+    location: [-8.3740, 115.4506]
   },
   {
     id: "baduy",
     name: "Kampung Adat Baduy",
     category: "Desa Adat",
-    location: [-6.4950, 106.2700],
-    image: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Baduy_people.jpg",
-    description: "Masyarakat adat yang menjaga tradisi dan alam."
+    location: [-6.4950, 106.2700]
   },
   {
     id: "tenun-ntt",
     name: "Tenun Ikat NTT",
     category: "Kerajinan Tradisional",
-    location: [-10.1772, 123.6070],
-    image: "https://upload.wikimedia.org/wikipedia/commons/5/57/Tenun_ikat_NTT.jpg",
-    description: "Kain tradisional dengan makna simbolik mendalam."
+    location: [-10.1772, 123.6070]
   }
 ];
+
+const map = L.map('map').setView([-2.5, 118], 5);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap'
+}).addTo(map);
+
+heritageSites.forEach(site => {
+  L.marker(site.location)
+    .addTo(map)
+    .bindPopup(`<b>${site.name}</b><br>${site.category}`);
+});
+</script>
+
+</body>
+</html>
