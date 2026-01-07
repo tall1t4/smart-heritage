@@ -1,98 +1,58 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart Heritage Mapping Indonesia</title>
-
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  />
-
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f8f9fb;
-      color: #1f2937;
-    }
-    header {
-      background: linear-gradient(135deg, #0f766e, #14b8a6);
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-    section {
-      padding: 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-    #map {
-      height: 480px;
-      border-radius: 20px;
-      margin-top: 1rem;
-    }
-  </style>
-</head>
-<body>
-
-<header>
-  <h1>Smart Heritage Mapping</h1>
-  <p>Pemetaan Digital Warisan Budaya Indonesia</p>
-</header>
-
-<section>
-  <h2>Peta Budaya Indonesia</h2>
-  <p>Klik marker → klik <strong>Lihat Detail</strong></p>
-  <div id="map"></div>
-</section>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-  const map = L.map('map').setView([-2.5, 118], 5);
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap'
-  }).addTo(map);
-
-  const heritageSites = [
-    {
-      id: "borobudur",
-      name: "Candi Borobudur",
-      category: "Situs Sejarah",
-      location: [-7.6079, 110.2038],
-      image: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Borobudur-Nothwest-view.jpg",
-      description: "Candi Buddha terbesar di dunia dan warisan UNESCO."
-    },
-    {
-      id: "prambanan",
-      name: "Candi Prambanan",
-      category: "Situs Sejarah",
-      location: [-7.7520, 110.4918],
-      image: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Prambanan_Temple_Compounds.jpg",
-      description: "Kompleks candi Hindu terbesar di Indonesia."
-    }
-  ];
-
-  heritageSites.forEach(site => {
-    const popup = `
-      <div style="max-width:220px">
-        <img src="${site.image}" style="width:100%;border-radius:8px;margin-bottom:6px">
-        <strong>${site.name}</strong><br>
-        <em>${site.category}</em>
-        <p style="font-size:0.85rem">${site.description}</p>
-        <a href="detail.html?id=${site.id}">
-          <strong>Lihat Detail →</strong>
-        </a>
-      </div>
-    `;
-
-    L.marker(site.location)
-      .addTo(map)
-      .bindPopup(popup);
-  });
-</script>
-
-</body>
-</html>
+const heritageSites = [
+  {
+    id: "borobudur",
+    name: "Candi Borobudur",
+    category: "Situs Sejarah",
+    location: [-7.6079, 110.2038],
+    image: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Borobudur-Nothwest-view.jpg",
+    description: "Candi Buddha terbesar di dunia dan warisan UNESCO."
+  },
+  {
+    id: "prambanan",
+    name: "Candi Prambanan",
+    category: "Situs Sejarah",
+    location: [-7.7520, 110.4918],
+    image: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Prambanan_Temple_Compounds.jpg",
+    description: "Kompleks candi Hindu terbesar di Indonesia."
+  },
+  {
+    id: "rumah-gadang",
+    name: "Rumah Gadang",
+    category: "Arsitektur Tradisional",
+    location: [-0.7399, 100.8000],
+    image: "https://upload.wikimedia.org/wikipedia/commons/3/3e/Rumah_Gadang_Padang.jpg",
+    description: "Rumah adat Minangkabau dengan filosofi matrilineal."
+  },
+  {
+    id: "tana-toraja",
+    name: "Tana Toraja",
+    category: "Budaya & Tradisi",
+    location: [-3.0753, 119.7426],
+    image: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Tana_Toraja.jpg",
+    description: "Wilayah adat dengan ritual pemakaman unik."
+  },
+  {
+    id: "pura-besakih",
+    name: "Pura Besakih",
+    category: "Situs Keagamaan",
+    location: [-8.3740, 115.4506],
+    image: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Pura_Besakih.jpg",
+    description: "Pura terbesar dan tersuci di Bali."
+  },
+  {
+    id: "baduy",
+    name: "Kampung Adat Baduy",
+    category: "Desa Adat",
+    location: [-6.4950, 106.2700],
+    image: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Baduy_people.jpg",
+    description: "Masyarakat adat yang menjaga tradisi dan alam."
+  },
+  {
+    id: "tenun-ntt",
+    name: "Tenun Ikat NTT",
+    category: "Kerajinan Tradisional",
+    location: [-10.1772, 123.6070],
+    image: "https://upload.wikimedia.org/wikipedia/commons/5/57/Tenun_ikat_NTT.jpg",
+    description: "Kain tradisional dengan makna simbolik mendalam."
+  }
+];
