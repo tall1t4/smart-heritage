@@ -1,132 +1,108 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Detail Warisan Budaya</title>
+const data = {
+  borobudur: {
+    name: "Candi Borobudur",
+    category: "Situs Sejarah",
+    image: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Borobudur-Nothwest-view.jpg",
+    description: "Candi Buddha terbesar di dunia dan warisan UNESCO.",
+    history: "Dibangun pada abad ke-8 oleh Dinasti Syailendra sebagai pusat ibadah dan pendidikan Buddha.",
+    open: "06.30 – 16.30 WIB",
+    ticket: "Rp50.000 (Domestik) | Rp350.000 (WNA)",
+    value: "Simbol kejayaan peradaban Nusantara.",
+    potential: [
+      "Wisata edukasi global",
+      "Tur virtual sejarah",
+      "UMKM lokal"
+    ]
+  },
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f8f9fb;
-      color: #1f2937;
-    }
-    header {
-      background: linear-gradient(135deg, #0f766e, #14b8a6);
-      color: white;
-      padding: 1.5rem;
-    }
-    main {
-      max-width: 900px;
-      margin: auto;
-      padding: 2rem;
-    }
-    img {
-      width: 100%;
-      border-radius: 20px;
-      margin: 1rem 0;
-    }
-    .badge {
-      background: #ccfbf1;
-      color: #0f766e;
-      padding: 6px 14px;
-      border-radius: 999px;
-      display: inline-block;
-      font-weight: 600;
-    }
-    a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-    }
-  </style>
-</head>
-<body>
+  prambanan: {
+    name: "Candi Prambanan",
+    category: "Situs Sejarah",
+    image: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Prambanan_Temple_Compounds.jpg",
+    description: "Kompleks candi Hindu terbesar di Indonesia.",
+    history: "Dibangun pada abad ke-9 sebagai persembahan bagi Trimurti.",
+    open: "06.30 – 17.00 WIB",
+    ticket: "Rp50.000 (Domestik) | Rp350.000 (WNA)",
+    value: "Warisan arsitektur Hindu kelas dunia.",
+    potential: [
+      "Festival Ramayana",
+      "Wisata budaya",
+      "Storytelling digital"
+    ]
+  },
 
-<header>
-  <a href="index.html">← Kembali ke Peta</a>
-</header>
+  "rumah-gadang": {
+    name: "Rumah Gadang",
+    category: "Arsitektur Tradisional",
+    image: "https://upload.wikimedia.org/wikipedia/commons/3/3e/Rumah_Gadang_Padang.jpg",
+    description: "Rumah adat Minangkabau.",
+    history: "Rumah adat dengan sistem matrilineal dan filosofi adat basandi syarak.",
+    open: "08.00 – 17.00 WIB",
+    ticket: "Gratis",
+    value: "Simbol kekerabatan dan adat Minangkabau.",
+    potential: [
+      "Wisata budaya",
+      "Edukasi arsitektur tradisional"
+    ]
+  },
 
-<main>
-  <h1 id="title"></h1>
-  <div class="badge" id="category"></div>
-  <img id="image">
+  "tana-toraja": {
+    name: "Tana Toraja",
+    category: "Budaya & Tradisi",
+    image: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Tana_Toraja.jpg",
+    description: "Wilayah adat dengan ritual unik.",
+    history: "Dikenal dengan ritual Rambu Solo’ dan rumah adat Tongkonan.",
+    open: "Setiap hari",
+    ticket: "Bervariasi",
+    value: "Identitas budaya Toraja yang kuat.",
+    potential: [
+      "Wisata budaya dunia",
+      "Dokumentasi digital tradisi"
+    ]
+  },
 
-  <h2>Deskripsi</h2>
-  <p id="description"></p>
+  "pura-besakih": {
+    name: "Pura Besakih",
+    category: "Situs Keagamaan",
+    image: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Pura_Besakih.jpg",
+    description: "Pura terbesar di Bali.",
+    history: "Pusat spiritual umat Hindu Bali sejak abad ke-8.",
+    open: "08.00 – 18.00 WITA",
+    ticket: "Rp60.000",
+    value: "Pusat spiritual Hindu Nusantara.",
+    potential: [
+      "Wisata religi",
+      "Edukasi lintas budaya"
+    ]
+  },
 
-  <h2>Sejarah</h2>
-  <p id="history"></p>
+  baduy: {
+    name: "Kampung Adat Baduy",
+    category: "Desa Adat",
+    image: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Baduy_people.jpg",
+    description: "Masyarakat adat yang menjaga alam.",
+    history: "Masyarakat Baduy hidup selaras dengan alam tanpa modernisasi.",
+    open: "Sesuai adat",
+    ticket: "Gratis",
+    value: "Kearifan lokal pelestarian alam.",
+    potential: [
+      "Wisata budaya terbatas",
+      "Edukasi lingkungan"
+    ]
+  },
 
-  <h2>Informasi Kunjungan</h2>
-  <ul>
-    <li><strong>Jam Buka:</strong> <span id="open"></span></li>
-    <li><strong>Harga Tiket:</strong> <span id="ticket"></span></li>
-  </ul>
-
-  <h2>Nilai Budaya</h2>
-  <p id="value"></p>
-
-  <h2>Potensi Pengembangan</h2>
-  <ul id="potential"></ul>
-</main>
-
-<script>
-  const data = {
-    borobudur: {
-      name: "Candi Borobudur",
-      category: "Situs Sejarah",
-      image: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Borobudur-Nothwest-view.jpg",
-      description: "Candi Buddha terbesar di dunia dan warisan budaya UNESCO.",
-      history: "Dibangun pada abad ke-8 oleh Dinasti Syailendra sebagai pusat ibadah Buddha dan pendidikan spiritual.",
-      open: "06.30 – 16.30 WIB",
-      ticket: "Rp50.000 (Domestik) | Rp350.000 (WNA)",
-      value: "Simbol kejayaan peradaban Nusantara dan toleransi budaya.",
-      potential: [
-        "Wisata edukasi global",
-        "Tur virtual berbasis teknologi",
-        "Penguatan UMKM lokal"
-      ]
-    },
-    prambanan: {
-      name: "Candi Prambanan",
-      category: "Situs Sejarah",
-      image: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Prambanan_Temple_Compounds.jpg",
-      description: "Kompleks candi Hindu terbesar di Indonesia.",
-      history: "Dibangun pada abad ke-9 sebagai persembahan untuk Trimurti.",
-      open: "06.30 – 17.00 WIB",
-      ticket: "Rp50.000 (Domestik) | Rp350.000 (WNA)",
-      value: "Warisan arsitektur Hindu yang mendunia.",
-      potential: [
-        "Festival budaya Ramayana",
-        "Storytelling digital",
-        "Wisata sejarah"
-      ]
-    }
-  };
-
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
-  const site = data[id];
-
-  if (site) {
-    document.getElementById("title").innerText = site.name;
-    document.getElementById("category").innerText = site.category;
-    document.getElementById("image").src = site.image;
-    document.getElementById("description").innerText = site.description;
-    document.getElementById("history").innerText = site.history;
-    document.getElementById("open").innerText = site.open;
-    document.getElementById("ticket").innerText = site.ticket;
-    document.getElementById("value").innerText = site.value;
-
-    site.potential.forEach(p => {
-      const li = document.createElement("li");
-      li.innerText = p;
-      document.getElementById("potential").appendChild(li);
-    });
+  "tenun-ntt": {
+    name: "Tenun Ikat NTT",
+    category: "Kerajinan Tradisional",
+    image: "https://upload.wikimedia.org/wikipedia/commons/5/57/Tenun_ikat_NTT.jpg",
+    description: "Kain tradisional khas NTT.",
+    history: "Setiap motif memiliki makna adat dan status sosial.",
+    open: "09.00 – 17.00 WITA",
+    ticket: "Gratis",
+    value: "Identitas budaya tekstil Nusantara.",
+    potential: [
+      "Ekonomi kreatif",
+      "Brand global tekstil lokal"
+    ]
   }
-</script>
-
-</body>
-</html>
+};
